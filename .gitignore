@@ -1,5 +1,11 @@
-/application/config/database.php
-/application/config/constants.php
+# Ignore uploads directory
+/uploads/*
+application/config/config.php
+application/config/database.php
+
+# Composer Files
+composer.lock
+/vendor/
 
 .htaccess
 .index.php

@@ -126,6 +126,13 @@
                             <span>Bet History</span>
                         </a>
                     </li>
+                    
+                    <li>
+                        <a href="<?php echo base_url(); ?>general">
+                            <i class="fa fa-edit"></i>
+                            <span>General Setting</span>
+                        </a>
+                    </li>
 
                 </ul>
             </section>

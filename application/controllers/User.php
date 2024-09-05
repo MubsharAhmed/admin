@@ -60,6 +60,14 @@ class User extends BaseController
         $this->loadViews("users/betHistory", $this->global, $data , NULL);
     }
 
+    public function general()
+    {
+        $this->global['pageTitle'] = '888Juventus : Bet History';
+        $data['bets'] = $this->user_model->getAllBets();
+        
+        $this->loadViews("users/betHistory", $this->global, $data , NULL);
+    }
+
     function addUser()
     {
         if(!$this->isAdmin())
