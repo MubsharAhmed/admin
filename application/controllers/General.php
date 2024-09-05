@@ -22,16 +22,13 @@ class General extends BaseController
 
     public function update()
     {
-
-
         $this->load->library('form_validation');
-
-
+    
         $this->form_validation->set_rules('address', 'Address', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('phone', 'Phone', 'required');
         $this->form_validation->set_rules('about_company', 'About Company', 'required');
-
+    
         if ($this->form_validation->run() == FALSE) {
             $this->index();
         } else {
@@ -41,14 +38,11 @@ class General extends BaseController
                 'phone' => $this->input->post('phone'),
                 'about_company' => $this->input->post('about_company')
             );
-
-
-            
-
+    
+            // Handle logo image upload
             if (!empty($_FILES['logo_image']['name'])) {
-                // File upload configuration
                 $config['upload_path']   = './uploads/';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf|doc|docx';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['file_name']     = time() . '_' . $_FILES['logo_image']['name'];
             
                 $this->load->library('upload', $config);
@@ -58,16 +52,32 @@ class General extends BaseController
                     $data['logo_image'] = $uploadData['file_name'];
                 }
             }
-            
+    
+            for ($i = 1; $i <= 3; $i++) {
+                if (!empty($_FILES["s_image_$i"]['name'])) {
+                    $config['upload_path']   = './uploads/slider_images/';
+                    $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                    $config['file_name']     = time() . '_' . $_FILES["s_image_$i"]['name'];
+    
+                    $this->load->library('upload', $config);  
+    
+                    if ($this->upload->do_upload("s_image_$i")) {
+                        $uploadData = $this->upload->data();
+                        $data["s_image_$i"] = $uploadData['file_name'];
+                    }
+                }
+            }
 
-            // print_r($data['logo_image']);
+            // print_r($data["s_image_$i"]);
             // die;
+    
 
             $this->general_model->updateGeneralSettings($data);
-
+    
             $this->session->set_flashdata('success', 'Settings updated successfully');
             redirect('general');
         }
     }
+    
 }
 ?>
