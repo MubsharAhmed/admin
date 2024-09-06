@@ -128,9 +128,15 @@
                     </li>
                     
                     <li>
-                        <a href="<?php echo base_url(); ?>general">
+                        <a href="<?php echo base_url(); ?>general/generalSetting">
                             <i class="fa fa-edit"></i>
                             <span>General Setting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>general/aboutUs">
+                            <i class="fa fa-edit"></i>
+                            <span>About Us Setting</span>
                         </a>
                     </li>
 

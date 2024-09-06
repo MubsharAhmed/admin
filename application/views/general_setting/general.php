@@ -100,10 +100,8 @@
                                     <div id="logo_preview" class="text-center">
                                         <!-- Conditionally show the default image or the uploaded image -->
                                         <?php if (isset($settings['logo_image']) && $settings['logo_image'] != ''): ?>
-                                            <!-- Image from the database -->
-                                            <img src="<?= base_url('uploads/' . $settings['logo_image']) ?>" alt="Logo" class="img-fluid" id="current_logo_image">
+                                            <img src="<?= base_url('uploads/logo/' . $settings['logo_image']) ?>" alt="Logo" class="img-fluid" id="current_logo_image">
                                         <?php else: ?>
-                                            <!-- Default placeholder image -->
                                             <img id="image_placeholder1" class="d-block mx-auto" src="./assets/images/upload.png" alt="" width="100">
                                             <p class="fss1 mb-0">Upload Logo</p>
                                         <?php endif; ?>
