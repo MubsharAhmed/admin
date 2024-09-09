@@ -18,14 +18,14 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <style>
-    .error {
-        color: red;
-        font-weight: normal;
-    }
+        .error {
+            color: red;
+            font-weight: normal;
+        }
     </style>
     <script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
-    var baseURL = "<?php echo base_url(); ?>";
+        var baseURL = "<?php echo base_url(); ?>";
     </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,6 +36,24 @@
     <![endif]-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+<style>
+    .main-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    .main-sidebar {
+        position: fixed;
+        left: 0;
+
+
+    }
+
+    body {
+        padding-top: 50px;
+    }
+</style>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -46,7 +64,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b style="color:darkcyan">VearaLink</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <!-- <span class="logo-lg"><img src="<?=base_url()?>assets/images/logo.png"></span> -->
+                <!-- <span class="logo-lg"><img src="<?= base_url() ?>assets/images/logo.png"></span> -->
                 <span class="logo-lg" style="color: darkcyan">VearaLink</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
@@ -125,7 +143,7 @@
                             <span>Bet History</span>
                         </a>
                     </li> -->
-                    
+
                     <li>
                         <a href="<?php echo base_url(); ?>general/generalSetting">
                             <i class="fa fa-edit"></i>
