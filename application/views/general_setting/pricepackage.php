@@ -27,9 +27,6 @@
 
     <section class="content">
         <div class="container">
-
-
-
             <!-- Form to update individual section -->
             <form action="<?php echo base_url('general/UpdateIndividualSection'); ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
 
@@ -79,14 +76,13 @@
             </form>
             <!-- End Form -->
 
-
             <!-- form update options Form -->
             <form action="<?php echo base_url('general/updatePricePackage'); ?>" method="post" enctype="multipart/form-data" class="form-horizontal row">
 
                 <?php foreach ($packages as $package): ?>
                     <div class="col-md-4 my-2">
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
+                        <div class="box box-primary">
+                            <div class="box-header with-border text-center">
                                 <h3 class="box-title"><?php echo $package['plan_type']; ?> Package</h3>
                             </div>
                             <div class="box-body">

@@ -10,18 +10,25 @@ class General extends BaseController
         $this->load->model('general_model');
     }
 
+
+    // this is seeder for seeding data into admin table 
+    public function seedAdmin() {
+        $this->load->model('general_model');
+        $message = $this->general_model->seedAdminTable();
+        echo $message;
+    }
+
     // these 2 are function render the data and update the general setting 
     public function generalSetting()
     {
         if (!$this->isAdmin()) {
-            $this->loadThis();
+            $this->loadThis('login');
         } else {
             $this->global['pageTitle'] = 'VearaLink : General Setting';
             $data['settings'] = $this->general_model->getAll();
             $this->loadViews("general_setting/general", $this->global, $data, NULL);
         }
     }
-
     public function update()
     {
         $this->load->library('form_validation');
@@ -75,6 +82,9 @@ class General extends BaseController
     // below is about us page setting fucntion 
     public function aboutUs()
     {
+        if (!$this->isAdmin()) {
+            redirect('login');
+        }
         $this->global['pageTitle'] = 'VearaLink : About Us';
 
         $data['about'] = $this->general_model->getAllAboutUs();
@@ -178,7 +188,6 @@ class General extends BaseController
 
         $this->loadViews("general_setting/home", $this->global, $data,   NULL);
     }
-
     // this is the home page update page section update 
     public function homeUpdate()
     {
@@ -271,7 +280,6 @@ class General extends BaseController
     }
     // home page end
 
-
     // services function started
     // services view page 
     public function services()
@@ -281,7 +289,6 @@ class General extends BaseController
         }
         $this->global['pageTitle'] = 'VearaLink : Services';
 
-        // Get dynamic services
         $data['consultingServices'] = $this->general_model->getServicesByType('consulting');
         $data['technicalServices'] = $this->general_model->getServicesByType('technical');
         $data['managedServices'] = $this->general_model->getServicesByType('managed');
@@ -289,8 +296,7 @@ class General extends BaseController
 
         $this->loadViews("general_setting/services", $this->global, $data,  NULL);
     }
-
-    // this the data which is static 
+    // this is static data in services section  
     public function updateStaticSection()
     {
         $this->load->library('form_validation');
@@ -323,7 +329,6 @@ class General extends BaseController
             redirect('general/services');
         }
     }
-
     // this is the dynamic services adding or updating function 
     public function updateService()
     {
@@ -368,14 +373,12 @@ class General extends BaseController
 
         redirect('general/services');
     }
-
     // this function is fetching for edit modaal  dataaaa
     public function getService($id)
     {
         $service = $this->db->where('id', $id)->get('services')->row();
         echo json_encode($service);
     }
-
     public function deleteService($id)
     {
         $service = $this->db->where('id', $id)->get('services')->row();
@@ -397,7 +400,6 @@ class General extends BaseController
             echo json_encode(['success' => false, 'message' => 'Service not found.']);
         }
     }
-
     // services function end 
 
     // case studies started 
@@ -406,17 +408,10 @@ class General extends BaseController
         if (!$this->isAdmin()) {
             redirect('login');
         }
-        
         $this->global['pageTitle'] = 'VearaLink : caseStudies';
-
-        // $data['consultingServices'] = $this->general_model->getServicesByType('consulting');
-
         $data['case'] = $this->general_model->getAllCaseStudiesData();
-
-
         $this->loadViews("general_setting/casestudies", $this->global, $data,  NULL);
     }
-
     public function updateCaseStudies()
     {
         $this->load->library('form_validation');
@@ -554,7 +549,6 @@ class General extends BaseController
     // case studies end 
 
     // price packages started 
-
     public function pricePackage()
     {
         if (!$this->isAdmin()) {
@@ -568,7 +562,6 @@ class General extends BaseController
 
         $this->loadViews("general_setting/pricepackage", $this->global, $data,  NULL);
     }
-
     public function updatePricePackage()
     {
         $postData = $this->input->post();
@@ -593,7 +586,6 @@ class General extends BaseController
         $this->general_model->updatePricePackage($data);
         redirect('general/pricepackage');
     }
-
     public function UpdateIndividualSection()
     {
         $title = $this->input->post('title');
@@ -601,7 +593,7 @@ class General extends BaseController
         $toll_free_price = $this->input->post('toll_free_price');
         $recording_price = $this->input->post('recording_price');
         $hold_music_price = $this->input->post('hold_music_price');
-    
+
         $data = array(
             'title' => $title,
             'phone_price' => floatval($phone_price),
@@ -610,9 +602,10 @@ class General extends BaseController
             'hold_music_price' => floatval($hold_music_price)
         );
         $this->general_model->updateOrInsertIndividualSection($data);
-        
+
         $this->session->set_flashdata('success', 'Settings updated successfully');
         redirect('general/pricepackage');
     }
-    
+
+
 }

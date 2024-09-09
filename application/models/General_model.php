@@ -10,14 +10,6 @@ class General_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-
-
-    // public function updateGeneralSettings($data)
-    // {
-    //     $this->db->where('id', 1); 
-    //     return $this->db->update('general_settings', $data);
-    // }
-
     public function updateGeneralSettings($data)
     {
 
@@ -34,7 +26,6 @@ class General_model extends CI_Model
             return $this->db->insert('general_settings', $data);
         }
     }
-
     public function getAllAboutUs()
     {
         $this->db->select('*');
@@ -42,7 +33,6 @@ class General_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-
     public function updateAboutUsSettings($data)
     {
         $this->db->select('id');
@@ -58,7 +48,6 @@ class General_model extends CI_Model
             return $this->db->insert('about_us', $data);
         }
     }
-
     public function getAllHomeSections()
     {
         $this->db->select('*');
@@ -66,7 +55,6 @@ class General_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-
     public function updateHomeSettings($data)
     {
         $this->db->select('id');
@@ -82,33 +70,23 @@ class General_model extends CI_Model
             return $this->db->insert('home', $data);
         }
     }
-
-
-
-
-
-
     public function getServicesByType($type)
     {
         return $this->db->get_where('services', ['service_type' => $type])->result();
     }
-
     public function updateService($id, $data)
     {
         $this->db->where('id', $id);
         return $this->db->update('services', $data);
     }
-
     public function addService($data)
     {
         return $this->db->insert('services', $data);
     }
-
     public function getStaticServiceSection()
     {
         return $this->db->get_where('services_static_section', ['id' => 1])->row();
     }
-
     public function updatestaticServices($data)
     {
         $this->db->select('id');
@@ -124,8 +102,6 @@ class General_model extends CI_Model
             return $this->db->insert('services_static_section', $data);
         }
     }
-
-
     public function updateCaseStudiesData($data)
     {
 
@@ -142,7 +118,6 @@ class General_model extends CI_Model
             return $this->db->insert('case_studies', $data);
         }
     }
-
     public function getAllCaseStudiesData()
     {
         $this->db->select('*');
@@ -150,9 +125,6 @@ class General_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-
-
-
     public function getAllPricePackageData()
     {
         $this->db->select('*');
@@ -201,14 +173,30 @@ class General_model extends CI_Model
             return $this->db->insert('individual_section', $data);
         }
     }
-    
-    
-
     public function getAllIndividualData()
     {
         $this->db->select('*');
         $this->db->from('individual_section');
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+
+    // for seeding data into admin table 
+    public function seedAdminTable() {
+        $data = [
+            'name'     => 'Admin User',
+            'email'    => 'admin2@gmail.com',
+            'password' => password_hash('password', PASSWORD_DEFAULT), 
+        ];
+
+        $existingAdmin = $this->db->get_where('admin', ['email' => $data['email']])->row();
+
+        if (!$existingAdmin) {
+            $this->db->insert('admin', $data);
+            return "Admin data seeded successfully!";
+        } else {
+            return "Admin already exists!";
+        }
     }
 }

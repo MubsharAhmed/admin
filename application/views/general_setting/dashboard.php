@@ -6,68 +6,91 @@
         </h1>
     </section>
 
+    <style>
+        .small-box {
+            background-color: #3C8DBC;
+            color: white;
+        }
+    </style>
+
+
     <section class="content">
         <div class="row">
-            <!-- <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3><?=$managerCount?></h3>
-                        <p>Managers</p>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box">
+                    <div class="inner text-center">  
+                        <h3>General</h3>   
+                        <p>Setting</p>                   
+                        
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person"></i>
+                        <i class="fa fa-wrench"></i>
                     </div>
-                    <a href="<?=base_url('managers')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?=base_url('general/generalSetting')?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3><?=$agentCount?></h3>
-                        <p>Agents</p>
+                <div class="small-box bg-primary">
+                    <div class="inner text-center">
+                        <h3>Home</h3>
+                        <p>Setting</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person"></i>
+                    <i class="fa fa-wrench"></i>
                     </div>
-                    <a href="<?=base_url('agents')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?=base_url('general/home')?>" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3><?=$userCount?></h3>
-                        <p>Users</p>
+                <div class="small-box bg-primary">
+                    <div class="inner text-center">
+                        <h3>About</h3>
+                        <p>Setting</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person"></i>
+                    <i class="fa fa-wrench"></i>
                     </div>
-                    <a href="<?=base_url('users')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div> -->
-            <!-- <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-yellow">
-                    <div class="inner">
-                        <h3>44</h3>
-                        <p>New User</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?=base_url('general/aboutUs')?>" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>65</h3>
-                        <p>Reopened Issue</p>
+                <div class="small-box bg-primary">
+                    <div class="inner text-center">
+                        <h3>Services</h3>
+                        <p>Setting</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                    <i class="fa fa-wrench"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url(); ?>general/services" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div> -->
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-primary">
+                    <div class="inner text-center">
+                        <h3>Case Studies</h3>
+                        <p>Setting</p>
+                    </div>
+                    <div class="icon">
+                    <i class="fa fa-wrench"></i>
+                    </div>
+                    <a href="<?php echo base_url(); ?>general/caseStudies" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-primary">
+                    <div class="inner text-center">  
+                        <h3>Price & Package</h3>   
+                        <p>Setting</p>                   
+                        
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+                    <a href="<?=base_url('general/pricepackage')?>" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
         </div>
     </section>
 </div>
