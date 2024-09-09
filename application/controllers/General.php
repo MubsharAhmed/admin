@@ -165,6 +165,10 @@ class General extends BaseController
     // This is the home page view function 
     public function home()
     {
+
+        if (!$this->isAdmin()) {
+            redirect('login');
+        }
         $this->global['pageTitle'] = 'VearaLink : Home Update';
 
         $data['home'] = $this->general_model->getAllHomeSections();
@@ -272,6 +276,9 @@ class General extends BaseController
     // services view page 
     public function services()
     {
+        if (!$this->isAdmin()) {
+            redirect('login');
+        }
         $this->global['pageTitle'] = 'VearaLink : Services';
 
         // Get dynamic services
@@ -396,6 +403,10 @@ class General extends BaseController
     // case studies started 
     public function caseStudies()
     {
+        if (!$this->isAdmin()) {
+            redirect('login');
+        }
+        
         $this->global['pageTitle'] = 'VearaLink : caseStudies';
 
         // $data['consultingServices'] = $this->general_model->getServicesByType('consulting');
@@ -546,6 +557,9 @@ class General extends BaseController
 
     public function pricePackage()
     {
+        if (!$this->isAdmin()) {
+            redirect('login');
+        }
         $this->global['pageTitle'] = 'VearaLink : Price Packages';
 
         $data['packages'] = $this->db->get('price_package')->result_array();
@@ -577,7 +591,7 @@ class General extends BaseController
             ];
         }
         $this->general_model->updatePricePackage($data);
-        redirect('general/pricePackage');
+        redirect('general/pricepackage');
     }
 
     public function UpdateIndividualSection()
@@ -598,7 +612,7 @@ class General extends BaseController
         $this->general_model->updateOrInsertIndividualSection($data);
         
         $this->session->set_flashdata('success', 'Settings updated successfully');
-        redirect('general/pricePackage');
+        redirect('general/pricepackage');
     }
     
 }

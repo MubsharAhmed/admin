@@ -1,3 +1,25 @@
+<style>
+    .text-start {
+        text-align: start !important;
+        font-weight: 500;
+    }
+
+    .m-0 {
+        margin: 0px;
+    }
+
+    .gap-3 {
+        display: flex;
+        justify-content: end;
+        gap: 1.5rem;
+    }
+    .m-0 {
+        font-weight: 500;
+    }
+    .box {
+        padding: 10px;
+    }
+</style>
 <div class="content-wrapper">
     <section class="content-header">
         <h1><i class="fa fa-edit"></i> Price & Packages</h1>
@@ -7,7 +29,7 @@
         <div class="container">
 
 
-   
+
             <!-- Form to update individual section -->
             <form action="<?php echo base_url('general/UpdateIndividualSection'); ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
 
@@ -56,190 +78,191 @@
 
             </form>
             <!-- End Form -->
-           
+
 
             <!-- form update options Form -->
-            <form action="<?php echo base_url('general/updatePricePackage'); ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <form action="<?php echo base_url('general/updatePricePackage'); ?>" method="post" enctype="multipart/form-data" class="form-horizontal row">
 
                 <?php foreach ($packages as $package): ?>
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title"><?php echo $package['plan_type']; ?> Package</h3>
+                    <div class="col-md-4 my-2">
+                        <div class="box box-danger">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?php echo $package['plan_type']; ?> Package</h3>
+                            </div>
+                            <div class="box-body">
+
+                                <!-- Pricing -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Pricing</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="pricing_<?php echo $package['id']; ?>" value="1" <?php echo ($package['pricing'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="pricing_<?php echo $package['id']; ?>" value="0" <?php echo ($package['pricing'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Telephone Number -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Telephone Number</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="telephone_number_<?php echo $package['id']; ?>" value="1" <?php echo ($package['telephone_number'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="telephone_number_<?php echo $package['id']; ?>" value="0" <?php echo ($package['telephone_number'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Unlimited Calls in the US -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Unlimited Calls in the US</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="unlimited_calls_us_<?php echo $package['id']; ?>" value="1" <?php echo ($package['unlimited_calls_us'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="unlimited_calls_us_<?php echo $package['id']; ?>" value="0" <?php echo ($package['unlimited_calls_us'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Voicemail to Email -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Voicemail to Email</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="voicemail_to_email_<?php echo $package['id']; ?>" value="1" <?php echo ($package['voicemail_to_email'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="voicemail_to_email_<?php echo $package['id']; ?>" value="0" <?php echo ($package['voicemail_to_email'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- 24/7 Support -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">24/7 Support</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="support_24_7_<?php echo $package['id']; ?>" value="1" <?php echo ($package['support_24_7'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="support_24_7_<?php echo $package['id']; ?>" value="0" <?php echo ($package['support_24_7'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Up to 25 Users -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Up to 25 Users</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="up_to_25_users_<?php echo $package['id']; ?>" value="1" <?php echo ($package['up_to_25_users'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="up_to_25_users_<?php echo $package['id']; ?>" value="0" <?php echo ($package['up_to_25_users'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Internet Fax -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Internet Fax</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="internet_fax_<?php echo $package['id']; ?>" value="1" <?php echo ($package['internet_fax'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="internet_fax_<?php echo $package['id']; ?>" value="0" <?php echo ($package['internet_fax'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Audio Conferencing -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Audio Conferencing</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="audio_conferencing_<?php echo $package['id']; ?>" value="1" <?php echo ($package['audio_conferencing'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="audio_conferencing_<?php echo $package['id']; ?>" value="0" <?php echo ($package['audio_conferencing'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Softphone -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Softphone</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="softphone_<?php echo $package['id']; ?>" value="1" <?php echo ($package['softphone'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="softphone_<?php echo $package['id']; ?>" value="0" <?php echo ($package['softphone'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- 3rd Party Integration -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">3rd Party Integration</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="third_party_integration_<?php echo $package['id']; ?>" value="1" <?php echo ($package['third_party_integration'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="third_party_integration_<?php echo $package['id']; ?>" value="0" <?php echo ($package['third_party_integration'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Self Care Portal -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Self Care Portal</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="self_care_portal_<?php echo $package['id']; ?>" value="1" <?php echo ($package['self_care_portal'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="self_care_portal_<?php echo $package['id']; ?>" value="0" <?php echo ($package['self_care_portal'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Auto Attendant -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Auto Attendant</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="auto_attendant_<?php echo $package['id']; ?>" value="1" <?php echo ($package['auto_attendant'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="auto_attendant_<?php echo $package['id']; ?>" value="0" <?php echo ($package['auto_attendant'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Call detail -->
+                                <div class="form-group">
+                                    <label class="col-sm-6 text-start control-label">Call Details</label>
+                                    <div class="col-sm-6 d-flex justify-content-end gap-3">
+                                        <label class="m-0">
+                                            <input type="radio" name="call_detailed_record_<?php echo $package['id']; ?>" value="1" <?php echo ($package['call_detailed_record'] == true) ? 'checked' : ''; ?>> Yes
+                                        </label>
+                                        <label class="m-0">
+                                            <input type="radio" name="call_detailed_record_<?php echo $package['id']; ?>" value="0" <?php echo ($package['call_detailed_record'] == false) ? 'checked' : ''; ?>> No
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
-
-                        <div class="box-body">
-
-                            <!-- Pricing -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Pricing</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="pricing_<?php echo $package['id']; ?>" value="1" <?php echo ($package['pricing'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="pricing_<?php echo $package['id']; ?>" value="0" <?php echo ($package['pricing'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Telephone Number -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Telephone Number</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="telephone_number_<?php echo $package['id']; ?>" value="1" <?php echo ($package['telephone_number'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="telephone_number_<?php echo $package['id']; ?>" value="0" <?php echo ($package['telephone_number'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Unlimited Calls in the US -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Unlimited Calls in the US</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="unlimited_calls_us_<?php echo $package['id']; ?>" value="1" <?php echo ($package['unlimited_calls_us'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="unlimited_calls_us_<?php echo $package['id']; ?>" value="0" <?php echo ($package['unlimited_calls_us'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Voicemail to Email -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Voicemail to Email</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="voicemail_to_email_<?php echo $package['id']; ?>" value="1" <?php echo ($package['voicemail_to_email'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="voicemail_to_email_<?php echo $package['id']; ?>" value="0" <?php echo ($package['voicemail_to_email'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- 24/7 Support -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">24/7 Support</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="support_24_7_<?php echo $package['id']; ?>" value="1" <?php echo ($package['support_24_7'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="support_24_7_<?php echo $package['id']; ?>" value="0" <?php echo ($package['support_24_7'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Up to 25 Users -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Up to 25 Users</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="up_to_25_users_<?php echo $package['id']; ?>" value="1" <?php echo ($package['up_to_25_users'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="up_to_25_users_<?php echo $package['id']; ?>" value="0" <?php echo ($package['up_to_25_users'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Internet Fax -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Internet Fax</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="internet_fax_<?php echo $package['id']; ?>" value="1" <?php echo ($package['internet_fax'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="internet_fax_<?php echo $package['id']; ?>" value="0" <?php echo ($package['internet_fax'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Audio Conferencing -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Audio Conferencing</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="audio_conferencing_<?php echo $package['id']; ?>" value="1" <?php echo ($package['audio_conferencing'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="audio_conferencing_<?php echo $package['id']; ?>" value="0" <?php echo ($package['audio_conferencing'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Softphone -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Softphone</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="softphone_<?php echo $package['id']; ?>" value="1" <?php echo ($package['softphone'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="softphone_<?php echo $package['id']; ?>" value="0" <?php echo ($package['softphone'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- 3rd Party Integration -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">3rd Party Integration</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="third_party_integration_<?php echo $package['id']; ?>" value="1" <?php echo ($package['third_party_integration'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="third_party_integration_<?php echo $package['id']; ?>" value="0" <?php echo ($package['third_party_integration'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Self Care Portal -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Self Care Portal</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="self_care_portal_<?php echo $package['id']; ?>" value="1" <?php echo ($package['self_care_portal'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="self_care_portal_<?php echo $package['id']; ?>" value="0" <?php echo ($package['self_care_portal'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Auto Attendant -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Auto Attendant</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="auto_attendant_<?php echo $package['id']; ?>" value="1" <?php echo ($package['auto_attendant'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="auto_attendant_<?php echo $package['id']; ?>" value="0" <?php echo ($package['auto_attendant'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Call detail -->
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Call Details</label>
-                                <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" name="call_detailed_record_<?php echo $package['id']; ?>" value="1" <?php echo ($package['call_detailed_record'] == true) ? 'checked' : ''; ?>> Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="call_detailed_record_<?php echo $package['id']; ?>" value="0" <?php echo ($package['call_detailed_record'] == false) ? 'checked' : ''; ?>> No
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
                 <?php endforeach; ?>
 

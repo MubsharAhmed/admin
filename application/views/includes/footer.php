@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>888Juventus</b> Admin Panel
+        <b>VearaLink</b> Admin Panel
     </div>
-    <strong>Copyright &copy; 2024-2025 <a href="<?php echo base_url(); ?>">888Juventus</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2024-2025 <a href="<?php echo base_url(); ?>">VearaLink</a>.</strong> All rights reserved.
 </footer>
 
 <script src="<?php echo base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
