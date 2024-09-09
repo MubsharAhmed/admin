@@ -100,7 +100,7 @@
                                     <div id="logo_preview" class="text-center">
                                         <!-- Conditionally show the default image or the uploaded image -->
                                         <?php if (isset($settings['logo_image']) && $settings['logo_image'] != ''): ?>
-                                            <img src="<?= base_url('uploads/logo/' . $settings['logo_image']) ?>" alt="Logo" class="img-fluid" id="current_logo_image">
+                                            <img src="<?= base_url('uploads/logo/' . $settings['logo_image']) ?>" style="background-color: black;" alt="Logo" class="img-fluid" id="current_logo_image">
                                         <?php else: ?>
                                             <img id="image_placeholder1" class="d-block mx-auto" src="./assets/images/upload.png" alt="" width="100">
                                             <p class="fss1 mb-0">Upload Logo</p>
@@ -184,32 +184,6 @@
         </div>
     </section>
 
-    <script>
-        // function previewImage(input, previewId) {
-        //     var file = input.files[0];
-        //     if (file) {
-        //         var reader = new FileReader();
-        //         reader.onload = function(e) {
-        //             var preview = document.getElementById(previewId);
-        //             preview.innerHTML = '<img class="img-fluid rounded" src="' + e.target.result + '" alt="Preview Image" width="200">';
-        //         };
-        //         reader.readAsDataURL(file);
-        //     }
-        // }
-
-        //     function previewImage(input) {
-        //     const file = input.files[0];
-        //     if (file) {
-        //         const reader = new FileReader();
-        //         reader.onload = function(e) {
-        //             const imgElement = input.nextElementSibling.querySelector('img');
-        //             imgElement.src = e.target.result;
-        //             imgElement.classList.add("imgUploaded")
-        //         }
-        //         reader.readAsDataURL(file);
-        //     }
-        // }
-    </script>
 
     <script>
         function previewImage(input, previewId) {

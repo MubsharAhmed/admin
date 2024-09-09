@@ -44,10 +44,10 @@
             <!-- Logo -->
             <a href="<?php echo base_url(); ?>" class="logo" style="background-color:white">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b style="color:darkcyan">888Juventus</b></span>
+                <span class="logo-mini"><b style="color:darkcyan">VearaLink</b></span>
                 <!-- logo for regular state and mobile devices -->
                 <!-- <span class="logo-lg"><img src="<?=base_url()?>assets/images/logo.png"></span> -->
-                <span class="logo-lg" style="color: darkcyan">888Juventus</span>
+                <span class="logo-lg" style="color: darkcyan">VearaLink</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -96,7 +96,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li>
+                    <!-- <li>
                         <a href="<?php echo base_url(); ?>dashboard">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
                         </a>
@@ -119,13 +119,12 @@
                             <span>Users</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="<?php echo base_url(); ?>bethistory">
                             <i class="fa fa-money"></i>
                             <span>Bet History</span>
                         </a>
-                    </li>
+                    </li> -->
                     
                     <li>
                         <a href="<?php echo base_url(); ?>general/generalSetting">
@@ -134,9 +133,34 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url(); ?>general/home">
+                            <i class="fa fa-edit"></i>
+                            <span>Home Page Setting</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?php echo base_url(); ?>general/aboutUs">
                             <i class="fa fa-edit"></i>
                             <span>About Us Setting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>general/services">
+                            <i class="fa fa-edit"></i>
+                            <span>Services Setting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url(); ?>general/caseStudies">
+                            <i class="fa fa-edit"></i>
+                            <span>Case Studies Setting</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo base_url(); ?>general/pricepackage">
+                            <i class="fa fa-edit"></i>
+                            <span>Price & Packages Setting</span>
                         </a>
                     </li>
 
