@@ -151,6 +151,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url(); ?>general/popup">
+                            <i class="fa fa-edit"></i>
+                            <span>Popup Setting</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?php echo base_url(); ?>general/home">
                             <i class="fa fa-edit"></i>
                             <span>Home Page Setting</span>

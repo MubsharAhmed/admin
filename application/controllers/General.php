@@ -12,7 +12,8 @@ class General extends BaseController
 
 
     // this is seeder for seeding data into admin table 
-    public function seedAdmin() {
+    public function seedAdmin()
+    {
         $this->load->model('general_model');
         $message = $this->general_model->seedAdminTable();
         echo $message;
@@ -22,12 +23,11 @@ class General extends BaseController
     public function generalSetting()
     {
         if (!$this->isAdmin()) {
-            $this->loadThis('login');
-        } else {
-            $this->global['pageTitle'] = 'VearaLink : General Setting';
-            $data['settings'] = $this->general_model->getAll();
-            $this->loadViews("general_setting/general", $this->global, $data, NULL);
+            redirect('login');
         }
+        $this->global['pageTitle'] = 'VearaLink : General Setting';
+        $data['settings'] = $this->general_model->getAll();
+        $this->loadViews("general_setting/general", $this->global, $data, NULL);
     }
     public function update()
     {
@@ -63,6 +63,8 @@ class General extends BaseController
                     $config['upload_path']   = './uploads/slider_images/';
                     $config['allowed_types'] = 'jpg|jpeg|png|gif';
                     $config['file_name']     = time() . '_' . $_FILES["s_image_$i"]['name'];
+                    // $config['max_size'] = 0; 
+
 
                     $this->load->library('upload', $config);
 
@@ -78,6 +80,49 @@ class General extends BaseController
         }
     }
     // general setting end
+
+    //  popup setting
+    public function popup()
+    {
+        if (!$this->isAdmin()) {
+            redirect('login');
+        }
+        $this->global['pageTitle'] = 'VearaLink : Popup Setting';        
+        $data['popUp'] = $this->general_model->getAllPopup();
+        $this->loadViews("general_setting/popup", $this->global, $data,  NULL);
+
+    }
+
+    public function updatePopup()
+    {
+
+        $data = array(
+            'heading_1_line' => $this->input->post('heading_1_line'),
+            'heading_2_line' => $this->input->post('heading_2_line'),
+            'text_1_line' => $this->input->post('text_1_line'),
+            'text_2_line' => $this->input->post('text_2_line'),
+            'text_3_line' => $this->input->post('text_3_line'),
+
+        );
+        if (!empty($_FILES['popup_image']['name'])) {
+            $config['upload_path']   = './uploads/popup/';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+            $config['file_name']     = time() . '_' . $_FILES['popup_image']['name'];
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('popup_image')) {
+                $uploadData = $this->upload->data();
+                $data['popup_image'] = $uploadData['file_name'];
+            }
+        }
+
+
+            $this->general_model->updatePopup($data);
+            $this->session->set_flashdata('success', 'Settings updated successfully');
+            redirect('general/popup');
+        
+    }
 
     // below is about us page setting fucntion 
     public function aboutUs()
@@ -156,6 +201,7 @@ class General extends BaseController
                 $config['upload_path']   = './uploads/about_us/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['file_name']     = time() . '_' . $_FILES['section_5_image']['name'];
+                $config['max_size'] = 0;
 
                 $this->load->library('upload', $config);
 
@@ -357,7 +403,8 @@ class General extends BaseController
             $config['allowed_types'] = 'jpg|jpeg|png|gif|svg|webp|bmp|tiff';
             $config['file_name'] = time() . '_' . $_FILES['icon_img2']['name'];
 
-            $this->upload->initialize($config);
+            // $this->upload->initialize($config);
+            $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('icon_img2')) {
                 $uploadData = $this->upload->data();
@@ -606,6 +653,4 @@ class General extends BaseController
         $this->session->set_flashdata('success', 'Settings updated successfully');
         redirect('general/pricepackage');
     }
-
-
 }

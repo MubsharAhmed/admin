@@ -32,6 +32,9 @@
             /* height: 500px; */
             max-width: 1060px;
         }
+        .img-thumbnail {
+            background-color: black;
+        }
     </style>
 
     <section class="content">

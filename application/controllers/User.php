@@ -14,6 +14,9 @@ class User extends BaseController
     
     public function index()
     {
+        if (!$this->isAdmin()) {
+            redirect('login');
+        }
         $this->global['pageTitle'] = 'VearaLink : Dashboard';
         // $searchText = '';
         // $data['managerCount'] = $this->user_model->managerCount($searchText);

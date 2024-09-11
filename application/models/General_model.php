@@ -155,14 +155,14 @@ class General_model extends CI_Model
 
     public function updateOrInsertIndividualSection($data)
     {
-        $id = 1; // Assuming you want to update or insert for ID 1
-    
+        $id = 1;
+
         // Check if the record exists
         $this->db->select('id');
         $this->db->from('individual_section');
         $this->db->where('id', $id);
         $query = $this->db->get();
-    
+
         if ($query->num_rows() > 0) {
             // Record exists, update it
             $this->db->where('id', $id);
@@ -182,12 +182,35 @@ class General_model extends CI_Model
     }
 
 
+
+    public function updatePopup($data)
+    {
+        $this->db->select('id');
+        $this->db->from('pop_up');
+        $this->db->where('id', 1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $this->db->where('id', 1);
+            return $this->db->update('pop_up', $data);
+        } else {
+            return $this->db->insert('pop_up', $data);
+        }
+    }
+
+    public function getAllPopup()
+    {
+        return $this->db->get_where('pop_up', ['id' => 1])->row();
+    }
+
     // for seeding data into admin table 
-    public function seedAdminTable() {
+    public function seedAdminTable()
+    {
         $data = [
             'name'     => 'Admin User',
             'email'    => 'admin2@gmail.com',
-            'password' => password_hash('password', PASSWORD_DEFAULT), 
+            'password' => password_hash('password', PASSWORD_DEFAULT),
         ];
 
         $existingAdmin = $this->db->get_where('admin', ['email' => $data['email']])->row();

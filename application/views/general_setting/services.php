@@ -7,7 +7,7 @@
     .card img {
         /* border: 1px solid gray; */
         padding: 5px;
-        background-color: whitesmoke;
+        /* background-color: black; */
     }
 
     .service-list {
@@ -49,8 +49,10 @@
         width: 100%;
         border-radius: 10px;
     }
+    .bg {
+        background-color: black;
+    }
 </style>
-
 <div class="content-wrapper">
     <section class="content-header">
         <h1><i class="fa fa-edit"></i> Services</h1>
@@ -112,7 +114,7 @@
                     <div class="service-list">
                         <div class="card">
                             <img src="<?= base_url('uploads/services/' . $service->icon_img1); ?>" width="300" alt=""><br>
-                            <img src="<?= base_url('uploads/services/' . $service->icon_img2); ?>" width="80" alt="">
+                            <img class="bg" src="<?= base_url('uploads/services/' . $service->icon_img2); ?>" width="80" alt="">
                             <h4><?= $service->title; ?></h4>
                             <p><?= $service->description; ?></p>
                             <button class="btn btn-warning fa fa-edit" onclick="openServiceModal(<?= $service->id; ?>, 'consulting')"></button>
@@ -130,7 +132,7 @@
                     <?php foreach ($technicalServices as $service) : ?>
                         <div class="card">
                             <img src="<?= base_url('uploads/services/' . $service->icon_img1); ?>" width="300" alt=""><br>
-                            <img src="<?= base_url('uploads/services/' . $service->icon_img2); ?>" width="80" alt="">
+                            <img class="bg" src="<?= base_url('uploads/services/' . $service->icon_img2); ?>" width="80" alt="">
                             <h4><?= $service->title; ?></h4>
                             <p><?= $service->description; ?></p>
                             <button class="btn btn-warning fa fa-edit" onclick="openServiceModal(<?= $service->id; ?>, 'technical')"></button>
@@ -149,7 +151,7 @@
                         <!-- <h1><?php  ?></h1> -->
                         <div class="card">
                             <img src="<?= base_url('uploads/services/' . $service->icon_img1); ?>" width="300" alt=""><br>
-                            <img src="<?= base_url('uploads/services/' . $service->icon_img2); ?>" width="80" alt="">
+                            <img class="bg" src="<?= base_url('uploads/services/' . $service->icon_img2); ?>" width="80" alt="">
                             <h4><?= $service->title; ?></h4>
                             <p><?= $service->description; ?></p>
                             <button class="btn btn-warning fa fa-edit" onclick="openServiceModal(<?= $service->id; ?>, 'managed')"></button>
